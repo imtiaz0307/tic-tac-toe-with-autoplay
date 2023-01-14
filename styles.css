@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: nunito;
+    color: white;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem;
+}
+
+.score {
+    font-size: 4vw;
+}
+
+.turn {
+    font-size: 2rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.grid {
+    height: 300px;
+    width: 300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 2px solid white;
+}
+
+.check {
+    border: 2px solid white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.check:hover {
+    background-color: rgb(36, 36, 36);
+}
+
+
+.gameOver {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.212);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.gameOverWrapper {
+    height: 300px;
+    width: 300px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.gameOverWrapper p {
+    font-size: 2rem;
+}
+
+.gameOverWrapper button {
+    all: unset;
+    background-color: white;
+    color: black;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.clearRecords {
+    all: unset;
+    background-color: white;
+    color: black;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    margin: 2rem auto;
+}
