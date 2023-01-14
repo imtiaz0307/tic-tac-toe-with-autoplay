@@ -10,7 +10,6 @@ const clearRecords = document.querySelector('.clearRecords')
 // const sounds
 const gameOverSound = new Audio('./sounds/gameOver.wav')
 const gameWinSound = new Audio('./sounds/gameWin.wav')
-const backgroundSound = new Audio('./sounds/bgm.wav')
 const checkSound = new Audio('./sounds/check.wav')
 
 // ranomize numbers
@@ -102,6 +101,7 @@ function checkWin() {
         else if (checksArray.length <= 0 && !someoneWon) {
             gameOverText.innerText = 'Game Tied. Play Again.'
             gameOver.style.display = 'flex'
+            gameOverSound.play()
             playing = false
         }
     }
