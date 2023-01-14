@@ -7,6 +7,12 @@ const scores = document.querySelectorAll('.score span')
 const turn = document.querySelector('.turn span')
 const clearRecords = document.querySelector('.clearRecords')
 
+// const sounds
+const gameOverSound = new Audio('./sounds/gameOver.wav')
+const gameWinSound = new Audio('./sounds/gameWin.wav')
+const backgroundSound = new Audio('./sounds/bgm.wav')
+const checkSound = new Audio('./sounds/check.wav')
+
 // ranomize numbers
 let randomPlayer = Math.round(Math.random())
 
@@ -41,7 +47,9 @@ function playerTurn() {
             if (playing) {
                 if (!e.target.innerText && currentPlayer === 0) {
                     e.target.innerText = 'X'
+                    e.target.style.color = 'blue'
                     checksArray = checksArray.filter(elem => elem !== index)
+                    checkSound.play()
                     checkWin()
                     currentPlayer = 1;
                     computerTurn()
@@ -58,8 +66,10 @@ function computerTurn() {
         setTimeout(() => {
             const randomElement = Math.floor(Math.random() * checksArray.length)
             checks[checksArray[randomElement]].innerText = 'O'
+            checks[checksArray[randomElement]].style.color = 'red'
             checksArray = checksArray.filter(elem => elem !== checksArray[randomElement])
             turn.textContent = 'Your'
+            checkSound.play()
             checkWin()
             currentPlayer = 0
         }, 1000)
@@ -78,6 +88,7 @@ function checkWin() {
             gameOver.style.display = 'flex'
             playing = false
             localStorage.setItem('computer-score', +computerScore + 1)
+            gameOverSound.play()
             someoneWon = true;
         }
         else if (checks[winningCombos[winCombo][0]].innerText == 'X' && checks[winningCombos[winCombo][1]].innerText == 'X' && checks[winningCombos[winCombo][2]].innerText == 'X') {
@@ -85,6 +96,7 @@ function checkWin() {
             gameOver.style.display = 'flex'
             playing = false
             localStorage.setItem('player-score', +playerScore + 1)
+            gameWinSound.play()
             someoneWon = true
         }
         else if (checksArray.length <= 0 && !someoneWon) {
