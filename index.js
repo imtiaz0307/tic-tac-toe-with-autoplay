@@ -98,12 +98,12 @@ function checkWin() {
             gameWinSound.play()
             someoneWon = true
         }
-        else if (checksArray.length <= 0 && !someoneWon) {
-            gameOverText.innerText = 'Game Tied. Play Again.'
-            gameOver.style.display = 'flex'
-            gameOverSound.play()
-            playing = false
-        }
+    }
+    if (checksArray.length <= 0 && !someoneWon) {
+        gameOverText.innerText = 'Game Tied. Play Again.'
+        gameOver.style.display = 'flex'
+        gameOverSound.play()
+        playing = false
     }
 }
 
@@ -116,6 +116,7 @@ playAgain.addEventListener('click', () => {
     gameOver.style.display = 'none'
     scores[0].innerText = playerScore || 0
     scores[1].innerText = computerScore || 0
+    someoneWon = false;
     playerTurn()
     computerTurn()
 })
